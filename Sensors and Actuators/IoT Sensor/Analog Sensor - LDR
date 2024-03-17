@@ -1,0 +1,36 @@
+#define ldrPin 4  // Menentukan pin 4 untuk LDR
+#define ntcPin 2  // Menentukan pin 2 untuk NTC
+
+// Konstanta ini harus sesuai dengan atribut "gamma" dan "rl10" pada fotoreistor
+// dapat dilihat di https://docs.wokwi.com/parts/wokwi-photoresistor-sensor
+const float RL10 = 50;
+const float GAMMA = 0.7;
+
+void setup() 
+{
+  Serial.begin(115200);             // Penetapan kecepatan transfer informasi dalam saluran komunikasi serial
+  Serial.println("Hello, ESP32!");  // Menambahkan teks ke monitor serial pada baris baru
+  analogReadResolution(12);         // Resolusi ESP32 12-bit. Ia memiliki ADC 12-bit yang berarti akan memberikan nilai digital dalam kisaran 0 – 4096 (2^12). 
+
+}
+
+void loop() 
+{
+  delay(10);                                // Jeda waktu dalam detik
+  int analogLDRValue = analogRead(ldrPin);  // Pembacaan nilai analog LDR
+
+  // Menghitung tegangan
+  float voltage = analogLDRValue / 4096. * 5; 
+
+  // Menghitung resistansi LDR
+  float resistance = 2000 * voltage / (1 - voltage / 5);
+
+  // Menghitung nilai lux
+  float lux = pow(RL10 * 1e3 * pow(10, GAMMA) / resistance, 1 / GAMMA); 
+
+  Serial.print("Tegangan: ");
+  Serial.println(voltage);                  // Menampilkan nilai tegangan ke monitor serial
+  Serial.print("Kecerahan: ");
+  Serial.println(lux);                      // Menampilkan nilai lux ke monitor serial
+  delay(1000);                              //Jeda waktu dalam detik
+}
