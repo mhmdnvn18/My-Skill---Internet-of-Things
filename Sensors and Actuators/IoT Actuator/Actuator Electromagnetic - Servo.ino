@@ -12,14 +12,18 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  //fungsi untuk memutar servo dengan pergerakan setiap derajat
-  for (pos=0;pos<=180;pos++){
-    servo.write(pos);
+  // // put your main code here, to run repeatedly:
+  // //fungsi untuk memutar servo dengan pergerakan setiap derajat
+  // for (pos=0;pos<=180;pos++){
+  //   servo.write(pos);
+  // delay(10);
+  // }
+  // for (pos=180;pos>=0;pos--){
+  //   servo.write(pos);
+  // delay(10);
+  //}
+
+  int analogValue = analogRead(14);
+  pos = map(analogValue, 0, 4095, 0, 160);
   delay(10);
-  }
-  for (pos=180;pos>=0;pos--){
-    servo.write(pos);
-  delay(10);
-}
 }
