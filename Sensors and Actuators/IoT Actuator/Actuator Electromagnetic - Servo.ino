@@ -1,8 +1,13 @@
-#include <ESP32Servo.h>   //Library untuk servo
+//Library untuk servo
+#include <ESP32Servo.h> 
 
-const int servoPin = 4;   //pin yang digunakan untuk servo
+//pin yang digunakan untuk servo
+const int servoPin = 4;             
+
 Servo servo;
-int pos = 0;                //Posisi derajat servo
+int pos = 0;                        //Posisi derajat servo
+int analogValue = analogRead(14);   //Pin potensio meter
+
 
 void setup() {
   // put your setup code here, to run once:
@@ -23,7 +28,8 @@ void loop() {
   // delay(10);
   //}
 
-  int analogValue = analogRead(14);
-  pos = map(analogValue, 0, 4095, 0, 160);
+//pemetaan/konversi putaran servo(12bit=4056) dengan derajar servo(180)
+  pos = map(analogValue, 0, 4095, 0, 180); 
+  servo.write(pos);
   delay(10);
 }
