@@ -6,11 +6,16 @@
 
 DHTesp dhtSensor;
 
+const float kecCahaya= 0.034;      //kecepatan suara ultrasonic 340m/s (0.034cm/us)
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
   Serial.println("Hello, ESP32!");
-  dhtSensor.setup(DHT_PIN, DHTesp::DHT22);  
+  dhtSensor.setup(DHT_PIN, DHTesp::DHT22);  //Mendefinisikan sensor DHT22
+
+  pinMode(TRIG_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
 }
 
 void loop() {
@@ -20,4 +25,14 @@ void loop() {
   Serial.println("Humidity:" + String(data.humidity,1)+ "%");     //menampilkan data hasil bacaan sensor humididty ke serial monitor
   Serial.println("---");
   delay(1000); // this speeds up the simulation
+
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+
+  int duration = pulseIn(ECHO_PIN, HIGH);   //ini adalah pembacaan sinyal modulasi
+  float jarak = duration*kecCahaya/2;       //Dibagi 2 karena kita mengukur jarak dari titik sumber ke titik tujuan, bukan dari sumber kembali ke sumber
+  Serial.print("Jarak (cm): ");
+  Serial.println(jarak);
+  delay(1000);
 }
