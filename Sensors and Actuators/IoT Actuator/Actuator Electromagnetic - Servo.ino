@@ -6,7 +6,6 @@ const int servoPin = 4;
 
 Servo servo;
 int pos = 0;                        //Posisi derajat servo
-int analogValue = analogRead(14);   //Pin potensio meter
 
 
 void setup() {
@@ -28,6 +27,7 @@ void loop() {
   // delay(10);
   //}
 
+  int analogValue = analogRead(14);   //Pin potensio meter
 //pemetaan/konversi putaran servo(12bit=4056) dengan derajar servo(180)
   pos = map(analogValue, 0, 4095, 0, 180); 
   servo.write(pos);
