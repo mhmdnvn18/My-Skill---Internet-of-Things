@@ -10,5 +10,6 @@ void loop()
 {
 dacWrite(DAC1, 255);
 int analogValue = analogRead(ADC_PIN);
-Serial.println(analogValue);
+int analogValue8bit = analogValue / 16;
+Serial.println(analogValue8bit);
 }
