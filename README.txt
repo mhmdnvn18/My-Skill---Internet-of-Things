@@ -1,7 +1,7 @@
 My Skill - Wokwi Simulation
 
-Digital Input dan Microcontroller Output - Pushbutton : https://wokwi.com/projects/394042203187508225
-
+Digital Input dan Microcontroller Output - Pushbutton: https://wokwi.com/projects/394042203187508225
+Digital Input dan Microcontroller Output - Multiplexer: https://wokwi.com/projects/394054363771132929
 
 Microcontroller - ADC: https://wokwi.com/projects/393348959319148545
 Microcontroller - PWM: https://wokwi.com/projects/393350097195123713
