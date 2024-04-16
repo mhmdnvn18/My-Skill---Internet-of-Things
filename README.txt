@@ -18,3 +18,5 @@ IoT Actuator - Servo: https://wokwi.com/projects/392796555705105409
 IoT Connectivity - I2C: https://wokwi.com/projects/394965209262768129
 Iot Connectivity - SPI: https://wokwi.com/projects/394965260648237057
 IoT Conncetivity - UART: https://wokwi.com/projects/394966314545822721
+
+IoT Platform - MQTT DHT22: https://wokwi.com/projects/395326202340739073
