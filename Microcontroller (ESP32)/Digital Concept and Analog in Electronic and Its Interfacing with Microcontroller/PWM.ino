@@ -24,3 +24,5 @@ void loop() {
   analogWrite(PWM_PIN, valuePWM);  //pin pwm ESP32 memiliki resolusi 8bit 2^10=255
   delay(200);                      // this speeds up the simulation
 }
+
+//afaafaf
